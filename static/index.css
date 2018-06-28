@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    --item-width: 6.5cm;
+    --button-color:#378053;
+    --button-hover: #285c3c;
+    --button-click: #214b31;
+    --top-nav: #949494;
+    --top-nav-padding: .7cm;
+    --button-padding: .4cm;
+}
+.top_nav{
+   background-color: var(--top-nav); 
+   margin:0;
+   margin-right: 0;
+   top: 0;
+   width:100%;
+   padding-top: var(--top-nav-padding);
+   padding-bottom: var(--top-nav-padding);
+   position: -webkit-sticky;
+    position:sticky;
+}
+.body{
+    padding: 10px;
+    
+}
+.container{
+    padding: .5cm;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--item-width));
+    grid-template-rows: repeat(auto-fill,auto);
+    grid-gap: 1cm;
+}
+.item{
+    background-color: rgba(250, 220, 183,100);
+    padding: .1cm;
+    width: var(--item-width);
+}
+.thumbnail{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: .1cm;
+    margin-top: .1cm;
+}
+.download{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: .1cm;
+    margin-top: .1cm;
+    background-color: var(--button-color);
+    border-radius: 10%;
+    border: none;
+    font-size: 16px;
+    padding:.4cm;
+    text-decoration: none;
+    color:black;
+    width:50%
+}
+.download:hover{
+    background-color: var(--button-hover);
+}
+.download:active{
+    background-color: var(--button-click);
+    transform: translateY(.5cm);
+}
+ul{
+    list-style-type: none;
+}
+li {
+    display: inline;
+}
+li:last-child{
+    float: right;
+}
+.upload{
+    vertical-align: middle;
+    margin-right: .7cm;
+    margin-left: auto;
+    margin-bottom: .1cm;
+    margin-top: .1cm;
+    background-color: var(--button-color);
+    border-radius: 10%;
+    border: none;
+    font-size: 16px;
+    padding:.4cm;
+    cursor: pointer;
+}
+.upload_overlay{
+    height: 0%;
+    width: 100%;
+    background-color: #252525e3;
+    position: fixed;
+    overflow-y: hidden;
+}
+.uploader-form{
+    margin-top: 5cm;
+    
+}
+.item_name{
+    font-size: 20px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
