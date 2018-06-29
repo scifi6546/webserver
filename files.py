@@ -20,24 +20,27 @@ class Files:
 
         for i in range(0,len(tempfiles)):
             temp_file_name=tempfiles[i]
-            temp=tempfiles[i].split('.')
+            #temp=tempfiles[i].split('.')
+            extension=self.return_extension(tempfiles[i])
+            #tempext="quest"
             
-            tempext="quest"
-            
-            if self.is_extension(temp[1]):
-                tempext=temp[1]
+            #if self.is_extension(temp[1]):
+                #tempext=temp[1]
                 
                 
-            self.files.append({"name":temp_file_name, "extension":tempext})
+            self.files.append({"name":temp_file_name, "extension":extension})
         print("files: " + str(self.files))
     def getFiles(self):
         return self.files
     def notifyUploaded(self,file_name):
         temp=file_name.split('.')
-        tempext="quest"
-        if self.is_extension(temp[1]):
-            
-            tempext=temp[1]
+        tempext=self.return_extension(file_name)
         self.files.append({"name":file_name,"extension": tempext})
-    
+    def return_extension(self,filename):
+        temp=filename.split('.')
+        if(self.is_extension(temp[1])):
+            return temp[1]
+        else:
+            return "quest"
+
 
