@@ -1,0 +1,14 @@
+{
+  "name": "shiv",
+  "version": "1.0.0",
+  "description": "a simple media server",
+  "main": "index.js",
+  "scripts": {
+    "test": "python3 main.py debug"
+  },
+  "author": "Nicholas Alexeev",
+  "license": "gpl3",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}

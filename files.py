@@ -22,22 +22,22 @@ class Files:
             temp_file_name=tempfiles[i]
             temp=tempfiles[i].split('.')
             
-            tempext="icons/?.svg"
+            tempext="?"
             
             if self.is_extension(temp[1]):
-                tempext="icons/"
-                tempext+=temp[1]
+                tempext=temp[1]
                 
-            self.files.append({"name":temp_file_name, "extension":tempext+ ".svg"})
+                
+            self.files.append({"name":temp_file_name, "extension":tempext})
         print("files: " + str(self.files))
     def getFiles(self):
         return self.files
     def notifyUploaded(self,file_name):
         temp=file_name.split('.')
-        tempext="icons/?.svg"
+        tempext="?"
         if self.is_extension(temp[1]):
-            tempext="icons/"
-            tempext+=temp[1] + ".svg"
+            
+            tempext=temp[1]
         self.files.append({"name":file_name,"extension": tempext})
     
 

@@ -35,12 +35,36 @@ def download(file):
 	#upload=os.path.join(upload,file)
 	print("upload: " + upload)
 	return send_file(upload)
+
+@app.route('/ajax/files',methods=['GET','POST'])
+def ajax_sendfiles():
+	temp=jsonify(files.getFiles())
+	print(temp)
+	return temp
+
+
+#api refrence
+#  /ajax/ = ajax request directory
+# /ajax/files get files
+# response = files array
+
+#  [
+# 	{
+# 		name: whatever.jpg
+#		extension: icons/jpg.svg
+# 	}
+#	{
+# 		name: whatever2.jpg
+#		extension: icons/jpg.svg
+# 	}
+# ]
 temp_args=""
 if len(sys.argv)==1:
 	temp_args=sys.argv[0]
 
 if __name__ == '__main__': 
 	if temp_args=="debug":
+		app.debug=True
 		app.run(host='0.0.0.0',port=5000,debug=True)
 	else:
 		app.wsgi_app = ProxyFix(app.wsgi_app)
