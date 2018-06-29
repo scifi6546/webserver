@@ -27,8 +27,8 @@ function refresh_files(){
 function render_files(files){
     var template = $("#item_template").html();
     $.each(files,function(i,file){
-        var temp = template.replace("{{file_type}}",file.extension).
-            replace("{{file_name}}",file.name);
+        var temp = template.replace("{{file_type}}",file.extension);
+        temp = temp.replace(/{{file_name}}/g,file.name);
         container.append(temp);
         //console.log("appended: " + temp);
     });
@@ -40,4 +40,4 @@ function render_files(files){
 
 window.setInterval(function(){
     refresh_files();
-},500);
+},1000);

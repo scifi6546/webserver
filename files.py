@@ -22,7 +22,7 @@ class Files:
             temp_file_name=tempfiles[i]
             temp=tempfiles[i].split('.')
             
-            tempext="?"
+            tempext="quest"
             
             if self.is_extension(temp[1]):
                 tempext=temp[1]
@@ -34,7 +34,7 @@ class Files:
         return self.files
     def notifyUploaded(self,file_name):
         temp=file_name.split('.')
-        tempext="?"
+        tempext="quest"
         if self.is_extension(temp[1]):
             
             tempext=temp[1]
