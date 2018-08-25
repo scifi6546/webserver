@@ -19,14 +19,16 @@
 <div class="upload_overlay" id="upload_overlay">
 	<div class="uploader_form">
 		<form action="uploader" method="POST" enctype="multipart/form-data">
-			<input type="file" name="file" />
-			<input type="submit" />
+			<div class="uploader_inside">
+				<input type="file" name="file"/>
+				<input type="submit" value="upload file" />
+			</div>
 		</form>
 	</div>
 </div>
 
 <div class="container">
-	
+
 </div>
 
 
@@ -34,16 +36,16 @@
 {% raw %}
 <script type="text/template" id="item_template">
 	<div class='item'>
-		<img src='/static/icons/{{file_type}}.svg' class='thumbnail'>
+		<img src='/static/icons/info.svg' class='info'>
+		<img src='{{file_type}}' class='thumbnail'>
 		<div class='item_description'>
 			<div class='item_name'>{{file_name}}</div>
 			<div class='button-div'>
-				<a href='uploads/{{file_name}}' class='download'>Download</a>
+				<a target="_blank" href='uploads/{{file_location}}' class='download'>Download</a>
 			</div>
 		</div>
     </div>
     
-</script>
+</script> {% endraw %}
 
-{% endraw %}
 </html>

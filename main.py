@@ -20,9 +20,10 @@ def index():
 @app.route('/uploader', methods=['GET','POST'])
 def uploader():
 	if request.method=='POST':
-		f = request.files['file']
-		f.save(os.path.join(app.config['UPLOAD_FOLDER'],secure_filename(f.filename)))
-		files.notifyUploaded(f.filename)
+		files.save_file(request,0)
+		#f = request.files['file']
+		#f.save(os.path.join(app.config['UPLOAD_FOLDER'],secure_filename(f.filename)))
+		#files.notifyUploaded(f.filename)
 		return redirect("/")
 		#return render_template("index.html")
 
@@ -31,10 +32,26 @@ def uploader():
 def download(file):
 	print("cwd: " + os.getcwd())
 	upload= app.config['UPLOAD_FOLDER'] + file
-	#upload=os.path.join(os.getcwd(),'/uploads/')
-	#upload=os.path.join(upload,file)
 	print("upload: " + upload)
 	return send_file(upload)
+@app.route('/thumbnails/<string:file>',methods=['GET','POST'])
+def send_thumbnail(file):
+	upload= config['thumbnail_folder'] + file
+	print("upload: " + upload)
+	return send_file(upload)
+
+#file API
+# [{
+#    "thumbnail": "exe",
+#    "name": "randofile.exe",
+#	 "location": randofile.exe
+#  },
+#  {
+#    "extension": "exe",
+#    "name": "randofile.exe",
+#	 "location": randofile2.exe
+#  }]
+
 
 @app.route('/ajax/files',methods=['GET','POST'])
 def ajax_sendfiles():
@@ -43,21 +60,7 @@ def ajax_sendfiles():
 	return temp
 
 
-#api refrence
-#  /ajax/ = ajax request directory
-# /ajax/files get files
-# response = files array
 
-#  [
-# 	{
-# 		name: whatever.jpg
-#		extension: icons/jpg.svg
-# 	}
-#	{
-# 		name: whatever2.jpg
-#		extension: icons/jpg.svg
-# 	}
-# ]
 temp_args=""
 if len(sys.argv)==1:
 	temp_args=sys.argv[0]
@@ -69,8 +72,3 @@ if __name__ == '__main__':
 	else:
 		app.wsgi_app = ProxyFix(app.wsgi_app)
 		app.run()
-
-
-	
-
-
